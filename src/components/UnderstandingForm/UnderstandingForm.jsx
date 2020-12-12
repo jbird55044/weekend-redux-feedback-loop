@@ -9,7 +9,7 @@ class UnderstandingForm extends Component {
 
   state = {
     currentForm: {
-      understanding: 0,
+      understanding: this.props.reduxState.currentUnderstanding,
     }
   }
   

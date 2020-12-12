@@ -9,7 +9,7 @@ class SupportedForm extends Component {
 
   state = {
     currentForm: {
-      supported: 0,
+      supported: this.props.reduxState.currentSupported,
     }
   }
   

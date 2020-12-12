@@ -9,7 +9,7 @@ class CommentForm extends Component {
 
   state = {
     currentForm: {
-      comment: '',
+      comment: this.props.reduxState.currentComment,
     }
   }
   

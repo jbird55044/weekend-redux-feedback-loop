@@ -31,6 +31,11 @@ class ConfirmationSubmit extends Component {
       // TODO - erase store  this.props.dispatch ({type: 'CURRENT_DELETE')
       console.log ('Submit Logic Here')
   }
+
+  goBackToForm = (formName) => {
+    this.props.history.push(formName)
+  }
+
   
   render() {
 
@@ -40,10 +45,21 @@ class ConfirmationSubmit extends Component {
         
         <p>Here are your responses, please confirm and submit </p>
         <ul>
-            <li>Feeling: {this.props.reduxState.currentFeeling}</li>
-            <li>Understanding: {this.props.reduxState.currentUnderstanding}</li>
-            <li>Supported: {this.props.reduxState.currentSupported}</li>
-            <li>Comment: {this.props.reduxState.currentComment}</li>
+            <li>
+                Feeling: {this.props.reduxState.currentFeeling} 
+                <button onClick={(event)=>this.goBackToForm('/FeelingForm')}>edit</button>
+            </li>
+            <li>
+                Understanding: {this.props.reduxState.currentUnderstanding}
+                <button onClick={(event)=>this.goBackToForm('/UnderstandingForm')}>edit</button>
+            </li>
+            <li>Supported: {this.props.reduxState.currentSupported}
+                <button onClick={(event)=>this.goBackToForm('/SupportedForm')}>edit</button>
+            </li>
+            <li>
+                Comment: {this.props.reduxState.currentComment}</li>
+                <button onClick={(event)=>this.goBackToForm('/CommentForm')}>edit</button>
+
         </ul>
         
         

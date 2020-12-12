@@ -18,35 +18,35 @@ const getFeedback = (state=[], action) => {
 };
 
 
-const currentFeeling = (state = '', action) => {
+const currentFeeling = (state = 0, action) => {
     // TODO: Products added to the cart
     if (action.type === 'CURRENT_FEELING') {
        return action.payload;
     }
     if (action.type === 'CURRENT_DELETE') {
-        return state='';
+        return state= 0;
     }
     return state;
 };
 
-const currentUnderstanding = (state = '', action) => {
+const currentUnderstanding = (state = 0, action) => {
     // TODO: Products added to the cart
     if (action.type === 'CURRENT_UNDERSTANDING') {
        return action.payload;
     }
     if (action.type === 'CURRENT_DELETE') {
-        return state='';
+        return state = 0;
     }
     return state;
 };
 
-const currentSupported = (state = '', action) => {
+const currentSupported = (state = 0, action) => {
     // TODO: Products added to the cart
     if (action.type === 'CURRENT_SUPPORTED') {
        return action.payload;
     }
     if (action.type === 'CURRENT_DELETE') {
-        return state='';
+        return state = 0;
     }
     return state;
 };

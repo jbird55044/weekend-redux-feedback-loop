@@ -9,7 +9,7 @@ class FeelingForm extends Component {
 
   state = {
     currentForm: {
-      feeling: 0,
+      feeling: this.props.reduxState.currentFeeling,
     }
   }
   
