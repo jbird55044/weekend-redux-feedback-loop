@@ -28,9 +28,12 @@ class FeelingForm extends Component {
   
 
   nextForm = () => {
-      
-      this.props.dispatch ({type: 'CURRENT_FEELING' , payload: this.state.currentForm.feeling })
-      this.props.history.push('/UnderstandingForm')
+      if (this.state.currentForm.feeling === 0) 
+        alert (' Value needs to be between 1 and 5')
+      else {
+        this.props.dispatch ({type: 'CURRENT_FEELING' , payload: this.state.currentForm.feeling })
+        this.props.history.push('/UnderstandingForm')
+      }
   }
   
   render() {

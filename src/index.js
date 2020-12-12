@@ -18,46 +18,46 @@ const getFeedback = (state=[], action) => {
 };
 
 
-const currentFeeling = (state = {}, action) => {
+const currentFeeling = (state = '', action) => {
     // TODO: Products added to the cart
     if (action.type === 'CURRENT_FEELING') {
        return action.payload;
     }
     if (action.type === 'CURRENT_DELETE') {
-        return state={};
+        return state='';
     }
     return state;
 };
 
-const currentUnderstanding = (state = {}, action) => {
+const currentUnderstanding = (state = '', action) => {
     // TODO: Products added to the cart
     if (action.type === 'CURRENT_UNDERSTANDING') {
        return action.payload;
     }
     if (action.type === 'CURRENT_DELETE') {
-        return state={};
+        return state='';
     }
     return state;
 };
 
-const currentSupported = (state = {}, action) => {
+const currentSupported = (state = '', action) => {
     // TODO: Products added to the cart
     if (action.type === 'CURRENT_SUPPORTED') {
        return action.payload;
     }
     if (action.type === 'CURRENT_DELETE') {
-        return state={};
+        return state='';
     }
     return state;
 };
 
-const currentComments = (state = {}, action) => {
+const currentComment = (state = '', action) => {
     // TODO: Products added to the cart
-    if (action.type === 'CURRENT_COMMENTS') {
+    if (action.type === 'CURRENT_COMMENT') {
        return action.payload;
     }
     if (action.type === 'CURRENT_DELETE') {
-        return state={};
+        return state='';
     }
     return state;
 };
@@ -69,7 +69,7 @@ const storeInstance = createStore(
         currentFeeling, 
         currentUnderstanding,
         currentSupported,
-        currentComments
+        currentComment
     }),
     applyMiddleware(logger),
 

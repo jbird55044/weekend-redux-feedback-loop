@@ -7,6 +7,7 @@ import FeelingForm from '../FeelingForm/FeelingForm'
 import UnderstandForm from '../UnderstandingForm/UnderstandingForm'
 import SupportedForm from '../SupportedForm/SupportedForm'
 import CommentForm from '../CommentForm/CommentForm'
+import ConfirmationSubmit from '../ConfirmationSubmit/ConfirmationSubmit'
 
 
 class App extends Component {
@@ -66,6 +67,7 @@ class App extends Component {
           <Route exact path="/UnderstandingForm" component={UnderstandForm} />
           <Route exact path="/SupportedForm" component={SupportedForm} />
           <Route exact path="/CommentForm" component={CommentForm} />
+          <Route exact path="/ConfirmationSubmit" component={ConfirmationSubmit} />
        </Router>
 
         <br/>

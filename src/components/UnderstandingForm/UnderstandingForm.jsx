@@ -17,7 +17,7 @@ class UnderstandingForm extends Component {
     // do something if necessary
   }
   
-  handleChangeFor = (propertyName='feeling') => (event) => {
+  handleChangeFor = (propertyName='understanding') => (event) => {
     this.setState({
         currentForm:{
             [propertyName]: event.target.value
@@ -27,8 +27,12 @@ class UnderstandingForm extends Component {
   
 
   nextForm = () => {
-    this.props.dispatch ({type: 'CURRENT_UNDERSTANDING' , payload: this.state.currentForm.understanding })
-    this.props.history.push('/SupportedForm')
+    if (this.state.currentForm.feeling === 0) 
+        alert (' Value needs to be between 1 and 5')
+    else {
+        this.props.dispatch ({type: 'CURRENT_UNDERSTANDING' , payload: this.state.currentForm.understanding })
+        this.props.history.push('/SupportedForm')
+    }
   }
   
   render() {
@@ -38,7 +42,7 @@ class UnderstandingForm extends Component {
       <div className="App">
         
         <label>How are you Understanding Today?</label>
-        <input type="number" min="1" max="5" value={this.state.currentForm.understanding} onChange={this.handleChangeFor}/>
+        <input type="number" min="1" max="5" value={this.state.currentForm.understanding} onChange={this.handleChangeFor('understanding')}/>
         
         
         <button onClick={this.nextForm}>Next</button>

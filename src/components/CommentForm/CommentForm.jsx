@@ -28,9 +28,7 @@ class CommentForm extends Component {
 
   nextForm = () => {
     this.props.dispatch ({type: 'CURRENT_COMMENT' , payload: this.state.currentForm.comment })
-      // TODO - Submit Logic to db
-      // TODO - erase store  this.props.dispatch ({type: 'CURRENT_DELETE')
-      console.log ('Submit Logic Here')
+    this.props.history.push('/ConfirmationSubmit')
   }
   
   render() {
@@ -40,7 +38,7 @@ class CommentForm extends Component {
       <div className="App">
         
         <label>Please enter a comment as you see fit . . . </label>
-        <input type="text" value={this.state.currentForm.comment} onChange={this.handleChangeFor()}/>
+        <input type="text" value={this.state.currentForm.comment} onChange={this.handleChangeFor('comment')}/>
         
         
         <button onClick={this.nextForm}>Next</button>
