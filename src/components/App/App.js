@@ -2,25 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import { connect } from 'react-redux'
-
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import FeelingForm from '../FeelingForm/FeelingForm'
+import UnderstandForm from '../UnderstandingForm/UnderstandingForm'
+import SupportedForm from '../SupportedForm/SupportedForm'
+import CommentForm from '../CommentForm/CommentForm'
 
 
 class App extends Component {
 
   state = {
-    application: {
+    currentForm: {
       date: '',
     }
   }
 
   componentDidMount() {
     this.getFeedback();
-    // this.props.dispatch ({type: 'CURRENT_FEELING' , payload: 5})
-    // this.props.dispatch ({type: 'CURRENT_UNDERSTANDING' , payload: 5})
-    // this.props.dispatch ({type: 'CURRENT_SUPPORTED' , payload: 5})
     // this.props.dispatch ({type: 'CURRENT_COMMENTS' , payload: 'comments here'})
-    // this.props.dispatch ({type: 'CURRENT_DELETE'})
-
   }
 
   getFeedback = () => {
@@ -29,9 +28,7 @@ class App extends Component {
       console.log (`get feedback`, response.data);
       // dispatch Array results for local access
       this.props.dispatch ({type: 'GET_FEEDBACK' , payload: response.data })
-      // console.log (`From REDUX`, this.props.reduxState.getFeedback);
       // console.log (`From REDUX`, ...this.props.reduxState.getFeedback);
-      // console.log (`From REDUX Current:`, this.props.reduxState.currentComments);
       this.getDate();
     }).catch ( (err ) => {
       console.log (`Error in Get`, err);
@@ -42,7 +39,7 @@ class App extends Component {
     let today = new Date();
     let date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
     this.setState({
-      application: {
+      currentForm: {
         date: date,
       }
     })
@@ -58,8 +55,19 @@ class App extends Component {
           <h1 className="App-title">Feedback!</h1>
           <h4><i>Don't forget it!</i></h4>
         </header>
-        
-        <button>Get Started with feedback for: {this.state.application.date}</button>
+        <h2>Feedback for: {this.state.currentForm.date}</h2>
+        <Router>
+        <nav className='navbar'>
+          <ul>
+            <li><Link to="/FeelingForm">Get Started</Link></li>
+          </ul>
+        </nav>
+          <Route exact path="/FeelingForm" component={FeelingForm} />
+          <Route exact path="/UnderstandingForm" component={UnderstandForm} />
+          <Route exact path="/SupportedForm" component={SupportedForm} />
+          <Route exact path="/CommentForm" component={CommentForm} />
+       </Router>
+
         <br/>
       </div>
     );
