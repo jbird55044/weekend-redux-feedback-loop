@@ -17,24 +17,59 @@ const getFeedback = (state=[], action) => {
     return state;
 };
 
-// TODO - 
-// Items in the cart, this reducer is incomplete
-// const checkoutReducer = (state = [], action) => {
-//     // TODO: Products added to the cart
-//     if (action.type === 'ADD_TO_CART') {
-//         return [...state, action.payload];
-//     } else if ( action.type === 'EMPTY_CART') {
-//         return state = [];
-//     }
-//     return state;
-// };
 
+const currentFeeling = (state = {}, action) => {
+    // TODO: Products added to the cart
+    if (action.type === 'CURRENT_FEELING') {
+       return action.payload;
+    }
+    if (action.type === 'CURRENT_DELETE') {
+        return state={};
+    }
+    return state;
+};
+
+const currentUnderstanding = (state = {}, action) => {
+    // TODO: Products added to the cart
+    if (action.type === 'CURRENT_UNDERSTANDING') {
+       return action.payload;
+    }
+    if (action.type === 'CURRENT_DELETE') {
+        return state={};
+    }
+    return state;
+};
+
+const currentSupported = (state = {}, action) => {
+    // TODO: Products added to the cart
+    if (action.type === 'CURRENT_SUPPORTED') {
+       return action.payload;
+    }
+    if (action.type === 'CURRENT_DELETE') {
+        return state={};
+    }
+    return state;
+};
+
+const currentComments = (state = {}, action) => {
+    // TODO: Products added to the cart
+    if (action.type === 'CURRENT_COMMENTS') {
+       return action.payload;
+    }
+    if (action.type === 'CURRENT_DELETE') {
+        return state={};
+    }
+    return state;
+};
 
 // The store is the big JavaScript Object that holds all of the information for our application
 const storeInstance = createStore(
     combineReducers({
         getFeedback,
-        // checkoutReducer
+        currentFeeling, 
+        currentUnderstanding,
+        currentSupported,
+        currentComments
     }),
     applyMiddleware(logger),
 
