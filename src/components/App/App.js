@@ -44,7 +44,6 @@ class App extends Component {
         date: date,
       }
     })
-    console.log (`date:`, date);
     return 
   }
   

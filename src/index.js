@@ -51,7 +51,7 @@ const currentSupported = (state = 0, action) => {
     return state;
 };
 
-const currentComment = (state = '', action) => {
+const currentComments = (state = '', action) => {
     // TODO: Products added to the cart
     if (action.type === 'CURRENT_COMMENT') {
        return action.payload;
@@ -69,7 +69,7 @@ const storeInstance = createStore(
         currentFeeling, 
         currentUnderstanding,
         currentSupported,
-        currentComment
+        currentComments
     }),
     applyMiddleware(logger),
 

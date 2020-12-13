@@ -9,7 +9,7 @@ class CommentForm extends Component {
 
   state = {
     currentForm: {
-      comment: this.props.reduxState.currentComment,
+      comments: this.props.reduxState.currentComments,
     }
   }
   
@@ -17,7 +17,7 @@ class CommentForm extends Component {
     // do something if necessary
   }
   
-  handleChangeFor = (propertyName='comment') => (event) => {
+  handleChangeFor = (propertyName='comments') => (event) => {
     this.setState({
         currentForm:{
             [propertyName]: event.target.value
@@ -27,7 +27,7 @@ class CommentForm extends Component {
   
 
   nextForm = () => {
-    this.props.dispatch ({type: 'CURRENT_COMMENT' , payload: this.state.currentForm.comment })
+    this.props.dispatch ({type: 'CURRENT_COMMENT' , payload: this.state.currentForm.comments})
     this.props.history.push('/ConfirmationSubmit')
   }
   
@@ -38,7 +38,7 @@ class CommentForm extends Component {
       <div className="App">
         
         <label>Please enter a comment as you see fit . . . </label>
-        <input type="text" value={this.state.currentForm.comment} onChange={this.handleChangeFor('comment')}/>
+        <input type="text" value={this.state.currentForm.comments} onChange={this.handleChangeFor('comments')}/>
         
         
         <button onClick={this.nextForm}>Next</button>
