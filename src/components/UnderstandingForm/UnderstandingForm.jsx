@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
+//button and input management for Material-UI
 const styles = theme => ({
     container: {
       display: 'flex',

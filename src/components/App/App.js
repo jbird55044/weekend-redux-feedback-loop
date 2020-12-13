@@ -23,6 +23,7 @@ class App extends Component {
     this.getFeedback();
   }
 
+  // Populate store with db data
   getFeedback = () => {
     // tell axios to make a get call, then dispatch the array results
     // put data in local client side store for easy/fast data retrieval
@@ -37,6 +38,7 @@ class App extends Component {
     })
   }
   
+  // get current system date for DOM
   getDate = () => {
     let today = new Date();
     let date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();

@@ -17,6 +17,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import EditIcon from '@material-ui/icons/Edit';
 
 
+//button and input management for Material-UI
 const styles = theme => ({
     root: {
       flexGrow: 1,
@@ -45,6 +46,7 @@ const styles = theme => ({
 
 class ConfirmationSubmit extends Component {
 
+    // stage state data for all user input to allow for easy PUT to db
   state = {
     databasePayload: {
       feeling: this.props.reduxState.currentFeeling,
@@ -52,26 +54,27 @@ class ConfirmationSubmit extends Component {
       support: this.props.reduxState.currentSupported,
       comments: this.props.reduxState.currentComments,
       flagged: false,
-      date: '12/12/2020'
+      date: '12/14/2020'
     },
     dense:false,
     secondary: false,
   }
   
   componentDidMount() {
-    // do something if necessary
+    this.populateCurrentDate()
   }
 
+  // set date to look human like and load into db
   populateCurrentDate = () => {
     let today = new Date();
     let dateString = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
     this.setState({
-        databasePayload: {
-            date: dateString,
+        databasePayload:{
+            date: dateString
         }
     });
     console.log (`date via state:`, this.state.databasePayload);
-    console.log (`date:`, dateString);
+    console.log (`date via string:`, dateString);
   }
   
   handleChangeFor = (propertyName='comment') => (event) => {
@@ -82,19 +85,18 @@ class ConfirmationSubmit extends Component {
     });
   }
   
-
+  // set local state data to db upon user 'submit'
   commitToDatabase = () => {
-    this.populateCurrentDate()
+    // this.populateCurrentDate()
     axios.post('/feedback', this.state.databasePayload)
     .then((response) => {
         console.log ('Added DB Payload', response.data)
         this.props.dispatch ({type: 'CURRENT_DELETE'})
         alert ('thank you or your feedback')
         this.goBackToForm('/Home')
+    }).catch ( (err ) => {
+        console.log (`Error in Get`, err);
     });
-    
-      // TODO - erase store  
-      console.log ('Submit Logic Here')
   }
 
   goBackToForm = (formName) => {
@@ -149,9 +151,7 @@ class ConfirmationSubmit extends Component {
         <Button variant="contained" color="primary" className={classes.button} onClick={this.commitToDatabase}>
             Submit<NavigateNextIcon className={classes.rightIcon}></NavigateNextIcon>
         </Button>
-       
       </div>
-      
     );
   }
 }

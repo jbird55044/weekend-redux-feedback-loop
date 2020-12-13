@@ -6,6 +6,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 class AdminPageItem extends Component {
 
+    // helps make SQL data look more human like
     formatSqlDate = (passedDate) => {
         let year = passedDate.slice(0, 4);
         let month = passedDate.slice(5, 7);
@@ -29,6 +30,7 @@ class AdminPageItem extends Component {
         })
       }
 
+    // delete one record based on user selection using db record ID
     deleteFeedback = ( event, feedbackId ) => {
         console.log (`delete ID`, feedbackId);
         axios.delete (`/feedback/${feedbackId}`)
