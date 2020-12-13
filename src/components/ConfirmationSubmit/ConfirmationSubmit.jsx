@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import EditIcon from '@material-ui/icons/Edit';
 
 
 const styles = theme => ({
@@ -117,22 +118,30 @@ class ConfirmationSubmit extends Component {
                   <ListItem>
                     <ListItemIcon> <DoubleArrowIcon /> </ListItemIcon>
                     <ListItemText primary = {`Feeling: ${this.props.reduxState.currentFeeling}`}/>
-                    <button onClick={(event)=>this.goBackToForm('/FeelingForm')}>edit</button>
+                    <Button size="small" variant="outlined" color="primary" className={classes.button} onClick={(event)=>this.goBackToForm('/FeelingForm')}>
+                        <EditIcon className={classes.leftIcon}></EditIcon>Edit
+                    </Button>
                   </ListItem>
                   <ListItem>
                     <ListItemIcon> <DoubleArrowIcon /> </ListItemIcon>
                     <ListItemText primary = {`Understanding: ${this.props.reduxState.currentUnderstanding}`}/>
-                    <button onClick={(event)=>this.goBackToForm('/UnderstandingForm')}>edit</button>
+                    <Button size="small" variant="outlined" color="primary" className={classes.button} onClick={(event)=>this.goBackToForm('/UnderstandingForm')}>
+                        <EditIcon className={classes.leftIcon}></EditIcon>Edit
+                    </Button>
                   </ListItem>
                   <ListItem>
                     <ListItemIcon> <DoubleArrowIcon /> </ListItemIcon>
                     <ListItemText primary = {`Supported: ${this.props.reduxState.currentSupported}`}/>
-                    <button onClick={(event)=>this.goBackToForm('/SupportedForm')}>edit</button>
+                    <Button size="small" variant="outlined" color="primary" className={classes.button} onClick={(event)=>this.goBackToForm('/SupportedForm')}>
+                        <EditIcon className={classes.leftIcon}></EditIcon>Edit
+                    </Button>
                   </ListItem>
                   <ListItem>
                     <ListItemIcon> <DoubleArrowIcon /> </ListItemIcon>
                     <ListItemText primary = {`Comment: ${this.props.reduxState.currentComments}`}/>
-                    <button onClick={(event)=>this.goBackToForm('/CommentForm')}>edit</button>
+                    <Button size="small" variant="outlined" color="primary" className={classes.button} onClick={(event)=>this.goBackToForm('/CommentForm')}>
+                        <EditIcon className={classes.leftIcon}></EditIcon>Edit
+                    </Button>
                   </ListItem>
               </List>
             </div>
