@@ -33,13 +33,13 @@ class AdminPage extends Component {
     return (
       <div className="App">
        <h3>Admin Page</h3>
-       <table>
-           <thead>
+       <table className="tableClass">
+           <thead className="tableHeadClass">
                 <tr>
                     <th>Feeling</th><th>Understanding</th><th>Supported</th><th>Comment</th><th>Date</th><th>Delete</th>
                 </tr>
            </thead>
-           <tbody>
+           <tbody className="tableBodyClass">
                         {this.props.reduxState.getFeedback.map((feedback, index) => {
                         return <AdminPageItem key={index} feedback={feedback} />;
                         })}
