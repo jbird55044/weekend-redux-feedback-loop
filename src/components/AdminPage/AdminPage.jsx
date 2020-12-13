@@ -8,6 +8,26 @@ import AdminPageItem from '../AdminPageItem/AdminPageItem'
 
 class AdminPage extends Component {
 
+    componentDidMount() {
+        this.getFeedback();
+    }
+
+    // duplicate getFeedback from App.  I believe if I knew about REDUX HOOKS, I would
+    // be able to remediate that.  Until then, I added a second get to solve for
+    // DOM refresh.
+    getFeedback = () => {
+        // tell axios to make a get call, then dispatch the array results
+        // used for future expansion of application
+        axios.get ('/feedback').then( (response) => {
+          console.log (`GETting feedback response`, response.data);
+          this.props.dispatch ({type: 'GET_FEEDBACK' , payload: response.data })
+          this.getDate();
+          console.log (`Feedback from reduxState`, this.props.reduxState.getFeedback);
+        }).catch ( (err ) => {
+          console.log (`Error in Get`, err);
+        })
+    }
+
     
   render() {
     return (

@@ -90,10 +90,8 @@ class FeelingForm extends Component {
         </form>
         <Button variant="contained" color="primary" className={classes.button} onClick={this.nextForm}>
             Next<NavigateNextIcon className={classes.rightIcon}></NavigateNextIcon>
-      </Button>
+        </Button>
 
-        {/* <button onClick={this.nextForm}>Next</button> */}
-       
       </div>
       
     );
@@ -109,4 +107,3 @@ const putReduxStateOnProps = (reduxState) => ({
 })
 
 export default connect(putReduxStateOnProps) (withStyles(styles) (FeelingForm)) ; 
-// export default App;

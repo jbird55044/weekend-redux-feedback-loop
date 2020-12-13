@@ -62,4 +62,3 @@ const putReduxStateOnProps = (reduxState) => ({
 })
 
 export default connect(putReduxStateOnProps)(AdminPageItem); 
-// export default App;

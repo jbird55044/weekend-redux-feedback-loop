@@ -1,11 +1,42 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './UnderstandingForm.css';
 import { connect } from 'react-redux'
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: "50%",
+    },
+    dense: {
+      marginTop: 16,
+    },
+    button: {
+       margin: theme.spacing.unit,
+    },
+    leftIcon: {
+    marginRight: theme.spacing.unit,
+    },
+    rightIcon: {
+    marginLeft: theme.spacing.unit,
+    },
+    iconSmall: {
+    fontSize: 20,
+    },
+  });
 
 
 class UnderstandingForm extends Component {
+    
 
   state = {
     currentForm: {
@@ -36,26 +67,41 @@ class UnderstandingForm extends Component {
   }
   
   render() {
-
+    const { classes } = this.props;
 
     return (
       <div className="App">
         
-        <label>How are you Understanding Today?</label>
-        <input type="number" min="1" max="5" value={this.state.currentForm.understanding} onChange={this.handleChangeFor('understanding')}/>
-        
-        
-        <button onClick={this.nextForm}>Next</button>
-       
+        <form className={classes.container} noValidate autoComplete="off">
+            <TextField
+            id="filled-number"
+            label="How are you Understanding Today?"
+            value={this.state.currentForm.understanding}
+            onChange={this.handleChangeFor('understanding')}
+            type="number"
+            InputProps={{inputProps: {max: 5, min: 1}}}
+            fullWidth
+            className={classes.textField}
+            InputLabelProps={{shrink: true,}}
+            margin="normal"
+            variant="filled"
+            />
+        </form>
+        <Button variant="contained" color="primary" className={classes.button} onClick={this.nextForm}>
+            Next<NavigateNextIcon className={classes.rightIcon}></NavigateNextIcon>
+        </Button>
       </div>
       
     );
   }
 }
 
+UnderstandingForm.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
 const putReduxStateOnProps = (reduxState) => ({
   reduxState
 })
 
-export default connect(putReduxStateOnProps)(UnderstandingForm); 
-// export default App;
+export default connect(putReduxStateOnProps) (withStyles(styles) (UnderstandingForm)) ; 
