@@ -25,7 +25,8 @@ class App extends Component {
 
   getFeedback = () => {
     // tell axios to make a get call, then dispatch the array results
-    // used for future expansion of application
+    // put data in local client side store for easy/fast data retrieval
+    // without going back to db
     axios.get ('/feedback').then( (response) => {
       console.log (`GETting feedback response`, response.data);
       this.props.dispatch ({type: 'GET_FEEDBACK' , payload: response.data })
