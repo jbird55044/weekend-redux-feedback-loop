@@ -68,7 +68,7 @@ class ConfirmationSubmit extends Component {
     return (
       <div className="App">
         
-        <p>Here are your responses, please confirm and submit </p>
+        <p>Here are your responses, please confirm, edit or submit </p>
         <ul>
             <li>
                 Feeling: {this.props.reduxState.currentFeeling} 

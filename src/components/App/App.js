@@ -8,6 +8,7 @@ import UnderstandForm from '../UnderstandingForm/UnderstandingForm'
 import SupportedForm from '../SupportedForm/SupportedForm'
 import CommentForm from '../CommentForm/CommentForm'
 import ConfirmationSubmit from '../ConfirmationSubmit/ConfirmationSubmit'
+import AdminPage from '../AdminPage/AdminPage'
 
 
 class App extends Component {
@@ -20,22 +21,21 @@ class App extends Component {
 
   componentDidMount() {
     this.getFeedback();
-    // this.props.dispatch ({type: 'CURRENT_COMMENTS' , payload: 'comments here'})
   }
 
   getFeedback = () => {
     // tell axios to make a get call, then dispatch the array results
+    // used for future expansion of application
     axios.get ('/feedback').then( (response) => {
-      console.log (`get feedback`, response.data);
-      // dispatch Array results for local access
+      console.log (`GETting feedback response`, response.data);
       this.props.dispatch ({type: 'GET_FEEDBACK' , payload: response.data })
-      // console.log (`From REDUX`, ...this.props.reduxState.getFeedback);
       this.getDate();
+      console.log (`Feedback from reduxState`, this.props.reduxState.getFeedback);
     }).catch ( (err ) => {
       console.log (`Error in Get`, err);
     })
   }
-
+  
   getDate = () => {
     let today = new Date();
     let date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
@@ -45,7 +45,7 @@ class App extends Component {
       }
     })
     return 
-  }
+  }  // end of getDate fn
   
 
   render() {
@@ -56,10 +56,12 @@ class App extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <h2>Feedback for: {this.state.currentForm.date}</h2>
+       
         <Router>
         <nav className='navbar'>
           <ul>
             <li><Link to="/FeelingForm">Get Started</Link></li>
+            <li><Link to="/AdminPage">(Secret Admin Page)</Link></li>
           </ul>
         </nav>
           <Route exact path="/FeelingForm" component={FeelingForm} />
@@ -67,6 +69,7 @@ class App extends Component {
           <Route exact path="/SupportedForm" component={SupportedForm} />
           <Route exact path="/CommentForm" component={CommentForm} />
           <Route exact path="/ConfirmationSubmit" component={ConfirmationSubmit} />
+          <Route exact path="/AdminPage" component={AdminPage} />
        </Router>
 
         <br/>

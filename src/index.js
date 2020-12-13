@@ -12,7 +12,7 @@ import logger from 'redux-logger';
 const getFeedback = (state=[], action) => {
     if (action.type === 'GET_FEEDBACK') {
         console.log (`in getFeedback`);
-        return [action.payload];
+        return action.payload;
     }
     return state;
 };
