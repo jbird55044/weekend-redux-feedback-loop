@@ -95,7 +95,7 @@ class ConfirmationSubmit extends Component {
         console.log ('Added DB Payload', response.data)
         this.props.dispatch ({type: 'CURRENT_DELETE'})
         alert ('Thank you for your feedback')
-        this.goBackToForm('/Home')
+        this.goBackToForm('/')
     }).catch ( (err ) => {
         console.log (`Error in Get`, err);
     });
