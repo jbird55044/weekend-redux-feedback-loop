@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import { connect } from 'react-redux'
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import Home from '../App/App'
 import FeelingForm from '../FeelingForm/FeelingForm'
 import UnderstandForm from '../UnderstandingForm/UnderstandingForm'
 import SupportedForm from '../SupportedForm/SupportedForm'
@@ -67,6 +68,7 @@ class App extends Component {
             <li><Link to="/AdminPage">(Secret Admin Page)</Link></li>
           </ul>
         </nav>
+          <Route exact path="/" component={Home} />
           <Route exact path="/FeelingForm" component={FeelingForm} />
           <Route exact path="/UnderstandingForm" component={UnderstandForm} />
           <Route exact path="/SupportedForm" component={SupportedForm} />

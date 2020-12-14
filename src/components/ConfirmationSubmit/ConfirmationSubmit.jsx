@@ -49,32 +49,36 @@ class ConfirmationSubmit extends Component {
     // stage state data for all user input to allow for easy PUT to db
   state = {
     databasePayload: {
-      feeling: this.props.reduxState.currentFeeling,
-      understanding: this.props.reduxState.currentUnderstanding,
-      support: this.props.reduxState.currentSupported,
-      comments: this.props.reduxState.currentComments,
+      feeling: 0,
+      understanding: 0,
+      support: 0,
+      comments: 0,
       flagged: false,
-      date: '12/14/2020'
+      date: ''
     },
     dense:false,
     secondary: false,
   }
   
+  // set State upon entering screen with both redux Store and date
   componentDidMount() {
-    this.populateCurrentDate()
+    this.setState({
+        databasePayload: {
+            feeling: this.props.reduxState.currentFeeling,
+            understanding: this.props.reduxState.currentUnderstanding,
+            support: this.props.reduxState.currentSupported,
+            comments: this.props.reduxState.currentComments,
+            flagged: false,
+            date: this.populateCurrentDate(),
+        }
+      });
   }
 
   // set date to look human like and load into db
   populateCurrentDate = () => {
     let today = new Date();
     let dateString = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
-    this.setState({
-        databasePayload:{
-            date: dateString
-        }
-    });
-    console.log (`date via state:`, this.state.databasePayload);
-    console.log (`date via string:`, dateString);
+    return dateString;
   }
   
   handleChangeFor = (propertyName='comment') => (event) => {
@@ -85,20 +89,19 @@ class ConfirmationSubmit extends Component {
     });
   }
   
-  // set local state data to db upon user 'submit'
   commitToDatabase = () => {
-    // this.populateCurrentDate()
     axios.post('/feedback', this.state.databasePayload)
     .then((response) => {
         console.log ('Added DB Payload', response.data)
         this.props.dispatch ({type: 'CURRENT_DELETE'})
-        alert ('thank you or your feedback')
+        alert ('Thank you for your feedback')
         this.goBackToForm('/Home')
     }).catch ( (err ) => {
         console.log (`Error in Get`, err);
     });
   }
 
+  // head user to Home upon sucessful submission
   goBackToForm = (formName) => {
     this.props.history.push(formName)
   }

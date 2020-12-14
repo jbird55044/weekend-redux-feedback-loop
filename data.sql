@@ -16,3 +16,13 @@ CREATE TABLE "feedback" (
 -- Sample feedback item
 INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
 VALUES (4, 4, 5, 'Doing Great!');
+INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
+VALUES (4, 4, 5, 'Doing Great!');
+INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
+VALUES (2, 3, 4, 'Doing Well!');
+INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
+VALUES (3, 3, 2, 'Doing OK!');
+INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
+VALUES (1, 1, 1, 'Got out of bed');
+INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
+VALUES (1, 3, 1, 'Not so hot Today');
